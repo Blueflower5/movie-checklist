@@ -73,7 +73,7 @@ export default function App() {
 }
 
 function Loader() {
-  return <p className="loader">Loading...</p>;
+  return <p className="loader"> در حال بارگذاری...</p>;
 }
 
 function ErrorMessage({ message }) {
@@ -96,8 +96,8 @@ function NavBar({ children }) {
 function Logo() {
   return (
     <div className="logo">
-      <span role="img">🍿</span>
-      <h1>usePopcorn</h1>
+      <span role="img">✅</span>
+      <h1>چک فیلم</h1>
     </div>
   );
 }
@@ -115,7 +115,7 @@ function Search({ query, setQuery }) {
     <input
       className="search"
       type="text"
-      placeholder="Search movies..."
+      placeholder="جستجوی نام فیلم..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
       ref={inputEl}
@@ -126,7 +126,7 @@ function Search({ query, setQuery }) {
 function NumResults({ movies }) {
   return (
     <p className="num-results">
-      Found <strong>{movies.length}</strong> results
+      <strong>{movies.length}</strong> نتیجه یافت شد
     </p>
   );
 }
@@ -187,7 +187,7 @@ function MovieList({ movies, onSelectMovie }) {
 function Movie({ movie, onSelectMovie }) {
   return (
     <li onClick={() => onSelectMovie(movie.imdbID)}>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
+      <img src={movie.Poster} alt={`${movie.Title} تصویر`} />
       <h3>{movie.Title}</h3>
       <div>
         <p>
@@ -305,7 +305,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
             <button className="btn-back" onClick={onCloseMovie}>
               &larr;
             </button>
-            <img src={poster} alt={`Poster of ${movie} movie`} />
+            <img src={poster} alt={`${movie} تصویر فیلم`} />
             <div className="details-overview">
               <h2>{title}</h2>
               <p>
@@ -314,7 +314,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
               <p>{genre}</p>
               <p>
                 <span>⭐️</span>
-                {imdbRating} IMDb rating
+                {imdbRating} IMDb امتیاز
               </p>
             </div>
           </header>
@@ -332,21 +332,21 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
                   />
                   {userRating > 0 && (
                     <button className="btn-add" onClick={handleAdd}>
-                      + Add to list
+                      افزودن به لیست
                     </button>
                   )}
                 </>
               ) : (
                 <p>
-                  You rated with movie {watchedUserRating} <span>⭐️</span>
+                  امتیاز شما {watchedUserRating} <span>⭐️</span>
                 </p>
               )}
             </div>
             <p>
               <em>{plot}</em>
             </p>
-            <p>Starring {actors}</p>
-            <p>Directed by {director}</p>
+            <p>بازیگران {actors}</p>
+            <p>کارگردان {director}</p>
           </section>
         </>
       )}
@@ -361,11 +361,11 @@ function WatchedSummary({ watched }) {
 
   return (
     <div className="summary">
-      <h2>Movies you watched</h2>
+      <h2>این فلیم ها رو دیدم ✅</h2>
       <div>
         <p>
           <span>#️⃣</span>
-          <span>{watched.length} movies</span>
+          <span>{watched.length} فیلم</span>
         </p>
         <p>
           <span>⭐️</span>
@@ -377,7 +377,7 @@ function WatchedSummary({ watched }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime} min</span>
+          <span>{avgRuntime.toFixed(2)} دقیقه</span>
         </p>
       </div>
     </div>
@@ -401,7 +401,7 @@ function WatchedMoviesList({ watched, onDeleteWatched }) {
 function WatchedMovie({ movie, onDeleteWatched }) {
   return (
     <li>
-      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <img src={movie.poster} alt={`${movie.title} تصویر`} />
       <h3>{movie.title}</h3>
       <div>
         <p>
@@ -414,7 +414,7 @@ function WatchedMovie({ movie, onDeleteWatched }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{movie.runtime} min</span>
+          <span>{movie.runtime} دقیقه</span>
         </p>
 
         <button
