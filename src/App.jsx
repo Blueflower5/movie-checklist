@@ -7,7 +7,7 @@ import { useMovies } from "./useMovies.jsx";
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-const KEY = "f84fc31d";
+const KEY = "3f2853f5";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -242,9 +242,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   //   },
   //   [imdbRating]
   // );
-
-  const isTop = imdbRating > 8;
-  console.log(isTop);
 
   // const [avgRating, setAvgRating] = useState(0);
 
